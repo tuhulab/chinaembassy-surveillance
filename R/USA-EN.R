@@ -29,7 +29,8 @@ content <- page$url %>% map_chr(extract_content)
 
 page_content_preview <- 
   page %>% 
-  mutate(Content_preview = paste0("[",content %>% str_remove_all("TRUE") %>% str_sub(1, 300), " ... (Read More)]","(", url,")")) %>% 
+  mutate(Content_preview = paste0("[",content %>% str_remove_all("TRUE") %>% 
+                                    str_remove_all("\n") %>% str_sub(1, 300), " ... (Read More)]","(", url,")")) %>% 
   select(-url)
 
 header_1 <- 
