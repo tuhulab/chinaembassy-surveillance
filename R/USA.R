@@ -36,11 +36,10 @@ header_1 <-
   paste("## The Table was Updated at", lubridate::with_tz(Sys.time(), tzone = "America/New_York"), "(New York Time) \n ")
 
 header_2 <- 
-  paste0("## The Last Update from the Embassy was on ", page$Time[1], "\n")
+  paste0("## The Latest Update from the Embassy was on ", page$Time[1], "\n")
 
 table <- knitr::kable(page_content_preview , format = "pipe")
 
 output <- c(header_1, header_2, table)
 write(output, "README.md")
-
 
